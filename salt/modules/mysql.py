@@ -115,6 +115,7 @@ __grants__ = [
     "READ_ONLY ADMIN",
     "REFERENCES",
     "RELOAD",
+    "REPLICA MONITOR",
     "REPLICATION CLIENT",
     "REPLICATION MASTER ADMIN",
     "REPLICATION REPLICA",
@@ -130,6 +131,7 @@ __grants__ = [
     "SHOW DATABASES",
     "SHOW VIEW",
     "SHUTDOWN",
+    "SLAVE MONITOR",
     "SUPER",
     "SYSTEM_VARIABLES_ADMIN",
     "TRIGGER",
@@ -650,6 +652,7 @@ def _resolve_grant_aliases(grants, server_version):
 
     mariadb_version_compare_replication_replica = "10.5.1"
     mariadb_version_compare_binlog_monitor = "10.5.2"
+    mariadb_version_compare_slave_monitor = "10.5.9"
 
     resolved_tokens = []
 
@@ -674,6 +677,17 @@ def _resolve_grant_aliases(grants, server_version):
             if token == "REPLICATION CLIENT":
                 # https://mariadb.com/kb/en/grant/#replication-client
                 resolved_tokens.append("BINLOG MONITOR")
+                continue
+
+        if (
+            salt.utils.versions.version_cmp(
+                server_version, mariadb_version_compare_slave_monitor
+            )
+            >= 0
+        ):
+            if token == "REPLICA MONITOR":
+                # https://mariadb.com/kb/en/grant/#replica-monitor
+                resolved_tokens.append("SLAVE MONITOR")
                 continue
 
         resolved_tokens.append(token)
