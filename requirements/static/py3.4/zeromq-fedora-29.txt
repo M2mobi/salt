@@ -30,7 +30,7 @@ dnspython==1.16.0
 docker-pycreds==0.4.0     # via docker
 docker==3.7.2
 docutils==0.14            # via botocore
-ecdsa==0.13.2             # via python-jose
+ecdsa==0.13.3             # via python-jose
 future==0.17.1            # via python-jose
 gitdb2==2.0.5             # via gitpython
 gitpython==2.1.11
