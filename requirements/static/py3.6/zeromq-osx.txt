@@ -36,7 +36,7 @@ enum34==1.1.6
 future==0.17.1            # via python-jose
 gitdb2==2.0.5             # via gitpython
 gitdb==0.6.4
-gitpython==2.1.11
+gitpython==3.1.32
 google-auth==1.6.3        # via kubernetes
 idna==2.8
 ipaddress==1.0.22
