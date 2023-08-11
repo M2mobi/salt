@@ -32,7 +32,7 @@ docutils==0.14            # via botocore
 ecdsa==0.13.2             # via python-jose
 future==0.17.1            # via python-jose
 gitdb2==2.0.5             # via gitpython
-gitpython==2.1.11
+gitpython==3.1.32
 google-auth==1.6.3        # via kubernetes
 idna==2.8                 # via requests
 ipaddress==1.0.22         # via kubernetes
